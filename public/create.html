@@ -1,6 +1,6 @@
 <div ng-controller="Create">
   <form>
-    <input ng-model="url" class='text' type='text' name='url'>
+    <input ng-model="url" ng-change='isValidUrl()' class='text {{urlIsValid}}' type='text' name='url'>
     <input ng-click="submit()" type='submit' value='Shorten'>
   </form>
   <img class='spinner' src='/spiffygif_46x46.gif' ng-show='spinnerDisplay' >

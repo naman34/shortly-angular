@@ -1,5 +1,9 @@
 <div ng-controller="Links">
-  <div ng-repeat="link in links" class="link">
+  <input ng-model="searchcritter.title">
+  <button ng-click="critter = '__v'">Order By Visits</button>
+  <button ng-click="critter = 'updatedAt'">Order By Hottest</button>
+  <button ng-click="critter = 'createdAt'">Order By Latest</button>
+  <div ng-repeat="link in links | filter:searchcritter | orderBy:critter:true" class="link">
     <img src='/redirect_icon.png'/>
     <div class='info'>
       <div class='visits'><span class='count'>{{link.__v}}</span>Visits</div>
