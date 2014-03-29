@@ -26,7 +26,7 @@ angular.module('Shortly', ['ngRoute'])
 
 .controller('Links', function($scope, LinkService){
   $scope.refresh = function(){
-    LinkService.getLinks().then(function(links){
+    return LinkService.getLinks().then(function(links){
       console.log(links);
       $scope.links = links;
     });
@@ -50,11 +50,12 @@ angular.module('Shortly', ['ngRoute'])
       return;
     } else {
       $scope.spinnerDisplay = true;
-      LinkService.postLink($scope.url).then(function(link){
+      return LinkService.postLink($scope.url).then(function(link){
         console.log('Link submitted', link);
         $scope.link = link.data;
         $scope.spinnerDisplay = false;
         $scope.linkDisplay = true;
+        return link;
       });
     }
   };
