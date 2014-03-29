@@ -1,3 +1,7 @@
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+
 body {
   margin: 0;
   margin-top: 10px;
@@ -37,18 +41,19 @@ h1 {
 
 .navigation li a , .logout {
   width: 100px;
-  height: 20px;
+  height: 100%;
   line-height: 20px;
   padding: 10px;
   display: block;
   text-align: center;
+  outline: none;
 }
 
 .navigation li a:hover {
   background-color: #ddd;
 }
 
-.navigation li a.selected {
+.navigation li a:target {
   background-color: #ccc;
 }
 
@@ -99,22 +104,63 @@ h1 {
 
 form {
   margin: 10px;
+  width: 100%;
 }
 
-form input[type=text], form input[type=password] {
-  width: 360px;
-  display: block;
-  font-size: 13px;
+.tools {
+  width: 100%;
+  padding: 20px;
+}
+
+input[type=text], input[type=password], input[type=search] {
+  width: calc( 100% - 120px);
+  max-width: 360px;
+  font-size: 16px;
   padding: 5px;
-  margin-bottom: 5px;
+  margin: 0 5px;
+  outline: none;
+  border: 0;
+}
+
+input[type=search] {
+  display: block;
+  width: 100%;
+  max-width: none;
+  margin: 5px auto 0;
+  border-radius: 16px;
+  padding-left: 8px;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+input[type=submit], button {
+  -webkit-appearance: none;
+  appearance: none;
+  border: 0;
+  outline: none;
+  background-color: rgb(120,200,250);
+  font-size: 16px;
+  padding: 5px;
+  width: 90px;
+  margin-left: -9px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover, button:hover{
+  background-color: rgb(80,250,120);
+}
+
+button {
+  margin: 10px 5px;
+  width: auto;
+  padding: 5px 20px;
 }
 
 form input[type=text].false {
-  background: rgba(200, 50, 50, 0.5);
+  background: rgba(200, 50, 50, 0.2);
 }
 
 form input[type=text].true {
-  background: rgba(50, 200, 50, 0.5);
+  background: rgba(50, 200, 50, 0.2);
 }
 
 .error {
